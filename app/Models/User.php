@@ -7,8 +7,10 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Filament\Panel;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -70,7 +72,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutTrashed()
  * @mixin \Eloquent
  */
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use SoftDeletes;
     use HasApiTokens;
@@ -134,5 +136,10 @@ class User extends Authenticatable
     public function messages()
     {
         return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
     }
 }

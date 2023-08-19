@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Message
- * 
+ *
  * @property int $id
  * @property int $sender_id
  * @property int $receiver_id
@@ -21,10 +21,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- * 
  * @property User $user
- *
  * @package App\Models
+ * @method static \Illuminate\Database\Eloquent\Builder|Message newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereMessageContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereReceiverId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereSendDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereSenderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message withoutTrashed()
+ * @mixin \Eloquent
  */
 class Message extends Model
 {

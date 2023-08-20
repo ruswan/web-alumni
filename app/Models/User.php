@@ -86,7 +86,6 @@ class User extends Authenticatable implements FilamentUser
         'graduation_id' => 'int',
         'major_id' => 'int',
         'consulate_id' => 'int',
-        'entry_year' => 'datetime'
     ];
 
     protected $hidden = [

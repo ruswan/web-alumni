@@ -19,6 +19,8 @@ class ConsulateResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
 
+    protected static ?string $navigationGroup = 'Masters';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -19,6 +19,8 @@ class GraduationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
+    protected static ?string $navigationGroup = 'Masters';
+
     public static function form(Form $form): Form
     {
         return $form

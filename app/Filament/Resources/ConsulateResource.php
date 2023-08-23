@@ -38,6 +38,11 @@ class ConsulateResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('users_count')
+                    ->counts('users')
+                    ->label('Alumni')
+                    ->translateLabel()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\GraduationResource\RelationManagers\UsersRelationManager;
 use App\Filament\Resources\GraduationResource\Pages;
 use App\Filament\Resources\GraduationResource\RelationManagers;
 use App\Models\Graduation;
@@ -43,6 +44,9 @@ class GraduationResource extends Resource
                 Tables\Columns\TextColumn::make('graduation_year')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('users_count')
+                    ->counts('users')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -74,7 +78,7 @@ class GraduationResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            UsersRelationManager::class,
         ];
     }
 

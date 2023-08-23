@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ConsulateResource\Pages;
 use App\Filament\Resources\ConsulateResource\RelationManagers;
+use App\Filament\Resources\ConsulateResource\RelationManagers\UsersRelationManager;
 use App\Models\Consulate;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -68,7 +69,7 @@ class ConsulateResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            UsersRelationManager::class,
         ];
     }
 

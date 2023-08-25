@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\UserResource\RelationManagers\PostsRelationManager;
 
 class UserResource extends Resource
 {
@@ -66,14 +67,22 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+
+                Tables\Columns\TextColumn::make('phone_number')
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('posts_count')
+                    ->counts('posts')
+                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('phone_number')
-                    ->searchable(),
+
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('consulate_id')
@@ -114,7 +123,7 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            PostsRelationManager::class,
         ];
     }
 

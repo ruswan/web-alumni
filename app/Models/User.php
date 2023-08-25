@@ -137,6 +137,11 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Message::class, 'sender_id');
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return true;

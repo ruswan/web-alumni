@@ -47,6 +47,7 @@ class PostResource extends Resource
 
                                 Forms\Components\Select::make('post_category_id')
                                     ->relationship('post_category', 'name')
+                                    ->label('Category')
                                     ->required(),
 
                                 Forms\Components\DatePicker::make('published_at')
@@ -67,6 +68,12 @@ class PostResource extends Resource
 
                 Forms\Components\Section::make()
                     ->schema([
+                        Forms\Components\Placeholder::make('user.name')
+                            ->label('Author')
+                            ->content(function (Post $record): ?string {
+                                return $record->user?->name;
+                            }),
+
                         Forms\Components\Placeholder::make('created_at')
                             ->label('Created at')
                             ->content(fn (Post $record): ?string => $record->created_at?->diffForHumans()),

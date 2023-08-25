@@ -76,6 +76,21 @@ class UserResource extends Resource
                     ->searchable(),
             ])
             ->filters([
+                Tables\Filters\SelectFilter::make('consulate_id')
+                    ->relationship('consulate', 'name')
+                    ->preload()
+                    ->label('Consulate'),
+
+                Tables\Filters\SelectFilter::make('graduation_id')
+                    ->relationship('graduation', 'batch_name')
+                    ->preload()
+                    ->label('Graduation'),
+
+                Tables\Filters\SelectFilter::make('major_id')
+                    ->relationship('major', 'name')
+                    ->preload()
+                    ->label('Major'),
+
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([

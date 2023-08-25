@@ -17,8 +17,8 @@ return new class () extends Migration {
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('content');
-            $table->boolean('is_visible')->default(false);
             $table->timestamp('published_at')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

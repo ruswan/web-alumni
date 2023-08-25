@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $title
  * @property string $slug
  * @property string $content
- * @property bool $is_visible
+ * @property string $image
  * @property Carbon|null $published_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -48,33 +48,32 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Post extends Model
 {
-	use SoftDeletes;
-	protected $table = 'posts';
+    use SoftDeletes;
+    protected $table = 'posts';
 
-	protected $casts = [
-		'post_category_id' => 'int',
-		'user_id' => 'int',
-		'is_visible' => 'bool',
-		'published_at' => 'datetime'
-	];
+    protected $casts = [
+        'post_category_id' => 'int',
+        'user_id' => 'int',
+        'published_at' => 'datetime',
+    ];
 
-	protected $fillable = [
-		'post_category_id',
-		'user_id',
-		'title',
-		'slug',
-		'content',
-		'is_visible',
-		'published_at'
-	];
+    protected $fillable = [
+        'post_category_id',
+        'user_id',
+        'title',
+        'slug',
+        'content',
+        'published_at',
+        'image'
+    ];
 
-	public function post_category()
-	{
-		return $this->belongsTo(PostCategory::class);
-	}
+    public function post_category()
+    {
+        return $this->belongsTo(PostCategory::class);
+    }
 
-	public function user()
-	{
-		return $this->belongsTo(User::class);
-	}
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

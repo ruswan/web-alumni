@@ -45,7 +45,8 @@ class UserResource extends Resource
                     ->password()
                     ->required()
                     ->maxLength(255)
-                    ->dehydrateStateUsing(fn (string $state): string => Hash::make($state)),
+                    ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
+                    ->hiddenOn('view'),
                 Forms\Components\Textarea::make('address')
                     ->maxLength(65535)
                     ->columnSpanFull(),

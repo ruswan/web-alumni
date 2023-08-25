@@ -66,7 +66,9 @@ class MajorResource extends Resource
             ])
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make(),
-            ]);
+            ])
+            ->deferLoading()
+            ->defaultSort('updated_at', 'desc');
     }
 
     public static function getRelations(): array

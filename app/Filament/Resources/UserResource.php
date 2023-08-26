@@ -30,7 +30,9 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\FileUpload::make('photo')
                     ->image()
-                    ->avatar(),
+                    ->imageEditor()
+                    ->avatar()
+                    ->directory('photos/avatars'),
                 Forms\Components\Select::make('graduation_id')
                     ->relationship('graduation', 'batch_name')
                     ->required(),
@@ -45,12 +47,12 @@ class UserResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
                     ->email()
+                    ->unique(ignoreRecord: true)
                     ->required()
                     ->maxLength(255),
                 Forms\Components\DateTimePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
                     ->password()
-                    ->required()
                     ->maxLength(255)
                     ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
                     ->hiddenOn('view'),

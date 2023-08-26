@@ -16,8 +16,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @property int $id
  * @property string $event_name
+ * @property string $slug
  * @property Carbon $event_date
  * @property string $location
+ * @property string $banner
  * @property string|null $description
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -43,22 +45,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Event extends Model
 {
-	use SoftDeletes;
-	protected $table = 'events';
+    use SoftDeletes;
+    protected $table = 'events';
 
-	protected $casts = [
-		'event_date' => 'datetime'
-	];
+    protected $casts = [
+        'event_date' => 'datetime'
+    ];
 
-	protected $fillable = [
-		'event_name',
-		'event_date',
-		'location',
-		'description'
-	];
+    protected $fillable = [
+        'event_name',
+        'slug',
+        'event_date',
+        'location',
+        'description',
+        'banner',
+    ];
 
-	public function event_registrations()
-	{
-		return $this->hasMany(EventRegistration::class);
-	}
+    public function event_registrations()
+    {
+        return $this->hasMany(EventRegistration::class);
+    }
 }

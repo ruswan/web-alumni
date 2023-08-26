@@ -22,6 +22,8 @@ class MajorResource extends Resource
 
     protected static ?string $navigationGroup = 'Masters';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -22,6 +22,8 @@ class GraduationResource extends Resource
 
     protected static ?string $navigationGroup = 'Masters';
 
+    protected static ?string $recordTitleAttribute = 'batch_name';
+
     public static function form(Form $form): Form
     {
         return $form

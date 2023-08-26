@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Consulate;
+use App\Models\Event;
 use App\Models\Graduation;
 use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
@@ -16,6 +17,7 @@ class StatsOverview extends BaseWidget
             Stat::make('Users', User::count()),
             Stat::make('Consulates', Consulate::count()),
             Stat::make('Graduations', Graduation::count()),
+            Stat::make('Events', Event::count()),
         ];
     }
 

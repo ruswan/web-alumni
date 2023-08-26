@@ -26,6 +26,9 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\FileUpload::make('photo')
+                    ->image()
+                    ->avatar(),
                 Forms\Components\Select::make('graduation_id')
                     ->relationship('graduation', 'batch_name')
                     ->required(),
@@ -66,6 +69,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('photo')
+                    ->rounded(),
+
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
 

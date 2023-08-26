@@ -24,6 +24,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $email
  * @property Carbon|null $email_verified_at
  * @property string $password
+ * @property string|null $photo
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -98,6 +99,7 @@ class User extends Authenticatable implements FilamentUser
         'email',
         'email_verified_at',
         'password',
+        'photo',
         'remember_token',
         'graduation_id',
         'major_id',
